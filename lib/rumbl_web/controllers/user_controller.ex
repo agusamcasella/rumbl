@@ -6,8 +6,8 @@ defmodule RumblWeb.UserController do
   plug :authenticate when action in [:index, :show]
   # responde a lo que le tira el router y llama a quien tenga que llamar
   def index(conn, _params) do
-    users = Accounts.list_users()
-    render(conn, "index.html", users: users)
+      users = Accounts.list_users()
+      render(conn, "index.html", users: users)
   end
 
   def show(conn, %{"id" => id}) do
@@ -25,6 +25,7 @@ defmodule RumblWeb.UserController do
     case Accounts.register_user(user_params) do
       {:ok, user} ->
         conn
+        |> RumblWeb.Auth.login(user)
         |> put_flash(:info, "#{user.name} created!")
         |> redirect(to: Routes.user_path(conn, :index))
 
