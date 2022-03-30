@@ -7,9 +7,17 @@ defmodule Rumbl.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "users" do #por defecto lleva id, y gracias a las macros schema y field,, esto es tanto el struct para elixir como la tabla de la base de datos
+  # por defecto lleva id, y gracias a las macros schema y field,, esto es tanto el struct para elixir como la tabla de la base de datos
+  schema "users" do
     field :name, :string
     field :username, :string
     timestamps()
+  end
+
+  def changeset(user, attrs) do
+    user
+    |> cast(attrs, [:name, :username])
+    |> validate_required([:name, :username])
+    |> validate_length(:username, min: 1, max: 20)
   end
 end

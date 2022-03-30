@@ -13,13 +13,23 @@ defmodule RumblWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
   end
-
+#para ver todas las rutas de la app correr
+# en consola  mix phx.routes
   scope "/", RumblWeb do
     pipe_through :browser
-    get "/users", UserController, :index
-    get "/users/:id", UserController, :show
     get "/", PageController, :index
+    resources "/users", UserController, only: [:index, :show, :new, :create]
   end
+
+  # la anterior declaracion con el resources es equivalente a lo siguiente
+  # get "/users", UserController, :index
+  # get "/users/:id/edit", UserController, :edit
+  # get "/users/new", UserController, :new
+  # get "/users/:id", UserController, :show
+  # post "/users", UserController, :create
+  # patch "/users/:id", UserController, :update
+  # put "/users/:id", UserController, :update
+  # delete "/users/:id", UserController, :delete
 
   # Other scopes may use custom stacks.
   # scope "/api", RumblWeb do
