@@ -9,14 +9,14 @@ defmodule RumblWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug RumblWeb.Auth
-
   end
 
   pipeline :api do
     plug :accepts, ["json"]
   end
-#para ver todas las rutas de la app correr
-# en consola  mix phx.routes
+
+  # para ver todas las rutas de la app correr
+  # en consola  mix phx.routes
   scope "/", RumblWeb do
     pipe_through :browser
     get "/", PageController, :index
