@@ -13,6 +13,7 @@ defmodule Rumbl.Accounts.User do
     field :username, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+
     timestamps()
   end
 
@@ -21,6 +22,7 @@ defmodule Rumbl.Accounts.User do
     |> cast(attrs, [:name, :username])
     |> validate_required([:name, :username])
     |> validate_length(:username, min: 1, max: 20)
+    |> unique_constraint(:username)
   end
 
   def registration_changeset(user, params) do
