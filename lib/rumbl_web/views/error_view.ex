@@ -11,11 +11,11 @@ defmodule RumblWeb.ErrorView do
   # the template name. For example, "404.html" becomes
   # "Not Found".
   def render("404.html", _assigns) do
-    "Page not found"
+    "Not Found"
   end
 
   def render("500.html", _assigns) do
-    "Internal server error"
+    "Internal Server Error"
   end
 
   def template_not_found(template, _assigns) do
