@@ -36,7 +36,8 @@ defmodule RumblWeb.VideoControllerTest do
 
     defp video_count, do: Enum.count(Multimedia.list_videos())
 
-    @tag login_as: "max" # esto lo atrapa el setup y pone username con "max" para darle el nombre que queremos al usuario creado
+    # esto lo atrapa el setup y pone username con "max" para darle el nombre que queremos al usuario creado
+    @tag login_as: "max"
     test "creates user video and redirects", %{conn: conn, user: user} do
       create_conn = post conn, Routes.video_path(conn, :create), video: @create_attrs
 

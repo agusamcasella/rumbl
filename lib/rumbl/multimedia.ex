@@ -8,6 +8,7 @@ defmodule Rumbl.Multimedia do
   alias Rumbl.Accounts
   alias Rumbl.Multimedia.Video
   alias Rumbl.Multimedia.Category
+
   @doc """
   Returns the list of videos.
 
@@ -103,7 +104,6 @@ defmodule Rumbl.Multimedia do
     Video.changeset(video, attrs)
   end
 
-
   def list_user_videos(%Accounts.User{} = user) do
     Video
     |> user_videos_query(user)
@@ -129,6 +129,4 @@ defmodule Rumbl.Multimedia do
     |> Category.alphabetical()
     |> Repo.all()
   end
-
-
 end

@@ -28,5 +28,4 @@ defmodule RumblWeb.SessionController do
     |> RumblWeb.Auth.logout()
     |> redirect(to: Routes.page_path(conn, :index))
   end
-
 end

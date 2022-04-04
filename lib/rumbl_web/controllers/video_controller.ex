@@ -3,7 +3,7 @@ defmodule RumblWeb.VideoController do
 
   alias Rumbl.Multimedia
   alias Rumbl.Multimedia.Video
-  #plug :authenticate_user when action in [:create]
+  # plug :authenticate_user when action in [:create]
   plug :load_categories when action in [:new, :create, :edit, :update]
 
   def index(conn, _params, current_user) do
@@ -54,7 +54,7 @@ defmodule RumblWeb.VideoController do
   end
 
   def delete(conn, %{"id" => id}, current_user) do
-    video = Multimedia.get_user_video!(current_user,id)
+    video = Multimedia.get_user_video!(current_user, id)
     {:ok, _video} = Multimedia.delete_video(video)
 
     conn
@@ -70,5 +70,4 @@ defmodule RumblWeb.VideoController do
   def load_categories(conn, _) do
     assign(conn, :categories, Multimedia.list_alphabetical_categories())
   end
-
 end
