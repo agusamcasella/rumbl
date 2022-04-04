@@ -36,5 +36,6 @@ defmodule RumblWeb.VideoViewTest do
       )
 
     assert String.contains?(content, "New Video")
+
   end
 end
