@@ -28,3 +28,7 @@ config :logger, level: :warn
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+
+config :pbkdf2_elixir, :rounds, 1 #para bajar el timepo que se gasta hasehando passwords en el test de auth,,Es decir no nos interesa el tiempo
+#que demore los test en transformar una password, porq es algo que se hace solo,,, por lo tanto ponemos esta liena de codigo.

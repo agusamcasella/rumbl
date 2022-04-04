@@ -3,7 +3,7 @@ defmodule Rumbl.TestHelpers do
     Accounts,
     Multimedia
   }
-
+  # funcion para crear un usuario rapido para supportear los tests
   def user_fixture(attrs \\ %{}) do
     {:ok, user} =
       attrs
@@ -16,6 +16,7 @@ defmodule Rumbl.TestHelpers do
 
     user
   end
+  # funcion para crear un video rapido para supportear los tests
 
   def video_fixture(%Accounts.User{} = user, attrs \\ %{}) do
     attrs =
