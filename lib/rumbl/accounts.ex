@@ -5,7 +5,7 @@ defmodule Rumbl.Accounts do
   Ahora con logica para traer los datos de la base de datos
   Se puso los datos de manera estatica al principio por no empezar de una con base de datos.
   """
-
+  import Ecto.Query
   alias Rumbl.Accounts.User
   alias Rumbl.Repo
 
@@ -59,6 +59,10 @@ defmodule Rumbl.Accounts do
         Pbkdf2.no_user_verify()
         {:error, :not_found}
     end
+  end
+
+  def list_users_with_ids(ids) do
+    Repo.all(from(u in User, where: u.id in ^ids))
   end
 end
 
