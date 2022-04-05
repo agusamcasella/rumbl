@@ -5,6 +5,7 @@ defmodule Rumbl.Accounts do
   Ahora con logica para traer los datos de la base de datos
   Se puso los datos de manera estatica al principio por no empezar de una con base de datos.
   """
+
   alias Rumbl.Accounts.User
   alias Rumbl.Repo
 
